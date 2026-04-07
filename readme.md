@@ -1,1 +1,1 @@
-hi
+[hi](pages/index.md)
