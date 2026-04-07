@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>코드베이스 구조 시각화</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 20px; background: #1a1a2e; color: #e0e0e0; }
+        h1 { color: #00d2ff; }
+        .tree { margin-left: 20px; }
+        .directory { color: #ffd700; cursor: pointer; }
+        .directory::before { content: "📁 "; }
+        .file { color: #b0b0b0; margin-left: 20px; }
+        .file::before { content: "📄 "; }
+        .file .size { color: #666; font-size: 0.8em; }
+        .children { margin-left: 20px; }
+        .stats { background: #16213e; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .stats h2 { color: #00d2ff; margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>코드베이스 구조</h1>
+    <div class="stats">
+        <h2>통계</h2>
+        <div id="stats"></div>
+    </div>
+    <div id="tree" class="tree"></div>
+    <script>
+        const data = {"name": "claude", "type": "directory", "children": [{"name": "CLAUDE.md", "type": "file", "size": 1545, "extension": ".md"}, {"name": "PLAN.md", "type": "file", "size": 1149, "extension": ".md"}, {"name": "changes.txt", "type": "file", "size": 16, "extension": ".txt"}, {"name": "dist", "type": "directory", "children": [{"name": "assets", "type": "directory", "children": [{"name": "index-9TDWiDg1.js", "type": "file", "size": 233118, "extension": ".js"}]}, {"name": "index.html", "type": "file", "size": 322, "extension": ".html"}]}, {"name": "docs", "type": "directory", "children": [{"name": "FEATURES", "type": "directory", "children": [{"name": "game_rule.md", "type": "file", "size": 2004, "extension": ".md"}, {"name": "main.md", "type": "file", "size": 734, "extension": ".md"}, {"name": "mission1.md", "type": "file", "size": 1365, "extension": ".md"}]}, {"name": "PRD.md", "type": "file", "size": 1676, "extension": ".md"}, {"name": "design", "type": "directory", "children": [{"name": "phase1.md", "type": "file", "size": 6174, "extension": ".md"}, {"name": "phase2_design.md", "type": "file", "size": 6942, "extension": ".md"}, {"name": "phase3_design.md", "type": "file", "size": 7738, "extension": ".md"}, {"name": "phase4_design.md", "type": "file", "size": 11729, "extension": ".md"}]}, {"name": "plan", "type": "directory", "children": [{"name": "phase1.md", "type": "file", "size": 1173, "extension": ".md"}, {"name": "phase10.md", "type": "file", "size": 1004, "extension": ".md"}, {"name": "phase11.md", "type": "file", "size": 957, "extension": ".md"}, {"name": "phase12.md", "type": "file", "size": 755, "extension": ".md"}, {"name": "phase2.md", "type": "file", "size": 852, "extension": ".md"}, {"name": "phase3.md", "type": "file", "size": 801, "extension": ".md"}, {"name": "phase4.md", "type": "file", "size": 987, "extension": ".md"}, {"name": "phase5.md", "type": "file", "size": 951, "extension": ".md"}, {"name": "phase6.md", "type": "file", "size": 905, "extension": ".md"}, {"name": "phase7.md", "type": "file", "size": 1023, "extension": ".md"}, {"name": "phase8.md", "type": "file", "size": 741, "extension": ".md"}, {"name": "phase9.md", "type": "file", "size": 839, "extension": ".md"}]}]}, {"name": "index.html", "type": "file", "size": 298, "extension": ".html"}, {"name": "package-lock.json", "type": "file", "size": 73829, "extension": ".json"}, {"name": "package.json", "type": "file", "size": 502, "extension": ".json"}, {"name": "readme.md", "type": "file", "size": 3, "extension": ".md"}, {"name": "src", "type": "directory", "children": [{"name": "App.tsx", "type": "file", "size": 640, "extension": ".tsx"}, {"name": "game", "type": "directory", "children": [{"name": "Game.ts", "type": "file", "size": 2663, "extension": ".ts"}, {"name": "__tests__", "type": "directory", "children": [{"name": "phase11.test.ts", "type": "file", "size": 2690, "extension": ".ts"}, {"name": "phase2.test.ts", "type": "file", "size": 4098, "extension": ".ts"}, {"name": "phase3.test.ts", "type": "file", "size": 3903, "extension": ".ts"}, {"name": "phase4.test.ts", "type": "file", "size": 5264, "extension": ".ts"}, {"name": "phase5.test.ts", "type": "file", "size": 3528, "extension": ".ts"}, {"name": "phase6.test.ts", "type": "file", "size": 2551, "extension": ".ts"}, {"name": "phase7.test.ts", "type": "file", "size": 1723, "extension": ".ts"}, {"name": "phase8_10.test.ts", "type": "file", "size": 3351, "extension": ".ts"}]}, {"name": "constants.ts", "type": "file", "size": 928, "extension": ".ts"}, {"name": "effects", "type": "directory", "children": [{"name": "Particle.ts", "type": "file", "size": 1791, "extension": ".ts"}, {"name": "SoundFx.ts", "type": "file", "size": 3361, "extension": ".ts"}]}, {"name": "entities", "type": "directory", "children": [{"name": "Balloon.ts", "type": "file", "size": 5168, "extension": ".ts"}, {"name": "Block.ts", "type": "file", "size": 5414, "extension": ".ts"}, {"name": "Player.ts", "type": "file", "size": 4667, "extension": ".ts"}, {"name": "PowerUp.ts", "type": "file", "size": 4186, "extension": ".ts"}, {"name": "Wire.ts", "type": "file", "size": 2240, "extension": ".ts"}]}, {"name": "input", "type": "directory", "children": [{"name": "InputManager.ts", "type": "file", "size": 442, "extension": ".ts"}]}, {"name": "screens", "type": "directory", "children": [{"name": "GameScreen.ts", "type": "file", "size": 30101, "extension": ".ts"}, {"name": "HowToPlayScreen.ts", "type": "file", "size": 3674, "extension": ".ts"}, {"name": "MainScreen.ts", "type": "file", "size": 6248, "extension": ".ts"}]}, {"name": "stages", "type": "directory", "children": [{"name": "StageData.ts", "type": "file", "size": 2416, "extension": ".ts"}]}]}, {"name": "main.tsx", "type": "file", "size": 205, "extension": ".tsx"}]}, {"name": "tsconfig.json", "type": "file", "size": 568, "extension": ".json"}, {"name": "tsconfig.tsbuildinfo", "type": "file", "size": 836, "extension": ".tsbuildinfo"}, {"name": "vite-env.d.ts", "type": "file", "size": 38, "extension": ".ts"}, {"name": "vite.config.ts", "type": "file", "size": 133, "extension": ".ts"}]};
+        
+        function countFiles(node) {
+            if (node.type === 'file') return { files: 1, size: node.size || 0 };
+            let result = { files: 0, size: 0 };
+            for (const child of (node.children || [])) {
+                const c = countFiles(child);
+                result.files += c.files;
+                result.size += c.size;
+            }
+            return result;
+        }
+        
+        function renderTree(node, container) {
+            if (node.type === 'directory') {
+                const div = document.createElement('div');
+                const label = document.createElement('div');
+                label.className = 'directory';
+                label.textContent = node.name;
+                div.appendChild(label);
+                
+                const children = document.createElement('div');
+                children.className = 'children';
+                for (const child of (node.children || [])) {
+                    renderTree(child, children);
+                }
+                div.appendChild(children);
+                
+                label.onclick = () => {
+                    children.style.display = children.style.display === 'none' ? 'block' : 'none';
+                };
+                
+                container.appendChild(div);
+            } else {
+                const div = document.createElement('div');
+                div.className = 'file';
+                const sizeStr = node.size > 1024 ? (node.size / 1024).toFixed(1) + ' KB' : node.size + ' B';
+                div.innerHTML = node.name + ' <span class="size">(' + sizeStr + ')</span>';
+                container.appendChild(div);
+            }
+        }
+        
+        const stats = countFiles(data);
+        document.getElementById('stats').innerHTML = 
+            '<p>총 파일 수: ' + stats.files + '</p>' +
+            '<p>총 크기: ' + (stats.size / 1024).toFixed(1) + ' KB</p>';
+        
+        renderTree(data, document.getElementById('tree'));
+    </script>
+</body>
+</html>
