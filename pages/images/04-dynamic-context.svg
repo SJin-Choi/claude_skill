@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500" viewBox="0 0 600 500" font-family="'Segoe UI', 'Noto Sans KR', sans-serif, monospace">
+  <defs>
+    <marker id="arrowE" markerWidth="12" markerHeight="8" refX="12" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#8b5cf6"/>
+    </marker>
+  </defs>
+
+  <!-- Title: Before -->
+  <rect x="20" y="10" width="560" height="195" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="40" y="38" font-size="14" font-weight="bold" fill="#b45309">SKILL.md (작성 시)</text>
+
+  <rect x="40" y="55" width="520" height="135" rx="8" fill="#fffbeb"/>
+  <text x="60" y="80" font-size="13" fill="#4b5563" font-family="'Consolas', 'Courier New', monospace">현재 브랜치:</text>
+  <rect x="165" y="64" width="225" height="22" rx="4" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="175" y="81" font-size="12" fill="#92400e" font-family="'Consolas', 'Courier New', monospace">!`git branch --show`</text>
+
+  <text x="60" y="115" font-size="13" fill="#4b5563" font-family="'Consolas', 'Courier New', monospace">최근 커밋:</text>
+  <rect x="60" y="125" width="310" height="22" rx="4" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="70" y="142" font-size="12" fill="#92400e" font-family="'Consolas', 'Courier New', monospace">!`git log --oneline -5`</text>
+
+  <text x="400" y="175" font-size="11" fill="#9ca3af" font-style="italic">← shell 명령어 구문</text>
+
+  <!-- Arrow -->
+  <line x1="300" y1="210" x2="300" y2="270" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrowE)"/>
+  <rect x="210" y="225" width="180" height="28" rx="6" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="300" y="244" text-anchor="middle" font-size="12" font-weight="bold" fill="#7c3aed">Skill 로드 시 실행</text>
+
+  <!-- Title: After -->
+  <rect x="20" y="275" width="560" height="210" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="40" y="303" font-size="14" font-weight="bold" fill="#065f46">SKILL.md (로드 후 — Claude가 보는 것)</text>
+
+  <rect x="40" y="318" width="520" height="150" rx="8" fill="#f0fdf4"/>
+  <text x="60" y="343" font-size="13" fill="#4b5563" font-family="'Consolas', 'Courier New', monospace">현재 브랜치:</text>
+  <rect x="165" y="327" width="165" height="22" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
+  <text x="175" y="344" font-size="12" fill="#065f46" font-weight="bold" font-family="'Consolas', 'Courier New', monospace">feature/login</text>
+
+  <text x="60" y="378" font-size="13" fill="#4b5563" font-family="'Consolas', 'Courier New', monospace">최근 커밋:</text>
+  <rect x="60" y="388" width="360" height="68" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="1"/>
+  <text x="70" y="405" font-size="11" fill="#065f46" font-family="'Consolas', 'Courier New', monospace">a1b2c3d Add login form</text>
+  <text x="70" y="422" font-size="11" fill="#065f46" font-family="'Consolas', 'Courier New', monospace">d4e5f6g Fix validation</text>
+  <text x="70" y="439" font-size="11" fill="#065f46" font-family="'Consolas', 'Courier New', monospace">g7h8i9j Update tests</text>
+
+  <text x="440" y="440" font-size="11" fill="#9ca3af" font-style="italic">← 실제 실행 결과</text>
+</svg>
